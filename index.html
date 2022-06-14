@@ -13,10 +13,10 @@
     <div id="welcome">
         <div class="inner_block">
             <div class="block_container">
-                <span class="choose">Choose Gender</span>
+                <span class="choose">Rank</span>
                 <div class="dropdown">
                     <div class="select">
-                        <span class="select-gander">Select Gender</span>
+                        <span class="rank">Select Gender</span>
                         <i class="fa fa-chevron-left"></i>
                     </div>
                     <input type="hidden" name="gender">
@@ -38,7 +38,7 @@
                         <li id="5 Minutes">5 Minutes</li>
                         <li id="15 Minutes">15 Minutes</li>
                         <li id="30 Minutes">30 Minutes</li> 
-                        <li id="60 Minutes">30 Minutes</li> 
+                        <li id="60 Minutes">60 Minutes</li> 
                         <li id="90 Minutes">90 Minutes</li>                      
                     </ul>
                 </div>
@@ -88,7 +88,7 @@
         $('.dropdown .dropdown-menu li').click(function () {
             $(this).parents('.dropdown').find('span').text($(this).text());
             $(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
-            if ($('.select-gander').text() !== 'Select Gender' && $('.practise-time').text() !== 'practise time') {
+            if ($('.rank').text() !== 'Select Gender' && $('.practise-time').text() !== 'practise time') {
                 $('.custom-btn').prop('disabled', false);
             } else {
                 $('.custom-btn').prop('disabled', true);
