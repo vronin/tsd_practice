@@ -51,11 +51,11 @@
     <div id="practice">
         <div class="inner_block">
             <div class="block_container">
-                <h4 class="page-title" id="technique">Low block / Ha Dan Mahk Ki</h4>
-                <h4 class="seconds-timer" id="technique-timer"></h4>
+                <h4 class="page-title" id="technique_name"></h4>
+                <h4 class="seconds-timer" id="technique_timer"></h4>
             </div>
-            <h5 class="main-timer" id="main-timer"></h5>
-            <h5 class="main-timer topbar-text"><span class="rotating-text">10 gup</span></h5>
+            <h5 class="main-timer" id="main_timer"></h5>
+            <h5 class="topbar-text" id="technique_rank"></h5>
         </div>
     </div>
     <div id="thankyou">
@@ -100,18 +100,32 @@
             f();
         });
 
-        // Update once a second
-        var interval = 1000;
+        var techniques = [
+            {
+                "name": "Low Block / Ha Dan Makh Ki",
+                "rank": "10 Gup",
+            },
+            {
+                "name": "Side Punch / Choong Dan Han Jin",
+                "rank": "9 Gup",
+            }
+        ]
 
-        var topbar = ['9 gup', '8 gup', '10 gup'];
-        var title = ['Lorem Ipsum is simply dummy text', 'Contrary to popular belief, Lorem Ipsum', 'lipsum as it is sometimes known'];
-
-        technique_timer = $('#technique-timer');
-        main_timer = $('#main-timer');
+        technique_name = $("#technique_name");
+        technique_rank = $("#technique_rank");
+        technique_timer = $('#technique_timer');
+        main_timer = $('#main_timer');
+        
 
         function update_timers_text(practice_time_left, technique_time_left) {
             $(technique_timer).text(technique_time_left + " Seconds Left");
             $(main_timer).text(Math.floor(practice_time_left / 60) + " Minutes "+practice_time_left % 60 + " Left")
+        }
+
+        function update_technique() {
+            var random_technique = Math.floor(Math.random() * techniques.length)
+            $(technique_name).text(techniques[random_technique].name);
+            $(technique_rank).text(techniques[random_technique].rank);
         }
 
         function f() {
@@ -123,6 +137,7 @@
             var technique_time_left = technique_time_cap;
 
             update_timers_text(practice_time_left, technique_time_left);
+            update_technique();
 
             var secInterval = setInterval(function () {
                 technique_time_left = technique_time_left - 1;
@@ -131,8 +146,8 @@
                 update_timers_text(practice_time_left, technique_time_left);
 
                 if (technique_time_left == 0) {
-                    console.log('next technique');
-                    // Next technique
+                    technique_time_left = technique_time_cap;
+                    update_technique();
                 }
 
                 if (practice_time_left == 0) {
@@ -142,7 +157,7 @@
                     $('#thankyou').fadeIn(250);                    
                 }
                 
-            }, interval);
+            }, 1000);
         }
     })
 </script>
