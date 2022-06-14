@@ -52,10 +52,9 @@
         <div class="inner_block">
             <div class="block_container">
                 <h4 class="page-title" id="technique">Low block / Ha Dan Mahk Ki</h4>
-                <h4 class="seconds-timer"><span id="technique-timer">30 </span> seconds left</h4>
+                <h4 class="seconds-timer" id="technique-timer"></h4>
             </div>
-            <h5 class="main-timer"><span class="minutes">2</span> Minutes <span class="seconds">0</span> seconds LeftZ
-            </h5>
+            <h5 class="main-timer" id="main-timer"></h5>
             <h5 class="main-timer topbar-text"><span class="rotating-text">10 gup</span></h5>
         </div>
     </div>
@@ -98,64 +97,51 @@
             e.preventDefault();
             $('#welcome').fadeOut(250);
             $('#practice').fadeIn(250);
-            let minutesVal = parseInt($('.minutes-input').val().replace('Minutes', '').trim()) - 1;
-            $(".minutes").text(minutesVal);
             f();
         });
+
+        // Update once a second
         var interval = 1000;
-        var sec = 60;
+
         var topbar = ['9 gup', '8 gup', '10 gup'];
         var title = ['Lorem Ipsum is simply dummy text', 'Contrary to popular belief, Lorem Ipsum', 'lipsum as it is sometimes known'];
-        var topbarCounter = 0;
-        var titleCounter = 0;
-        var halfMin = 0;
+
+        technique_timer = $('#technique-timer');
+        main_timer = $('#main-timer');
+
+        function update_timers_text(practice_time_left, technique_time_left) {
+            $(technique_timer).text(technique_time_left + " Seconds Left");
+            $(main_timer).text(Math.floor(practice_time_left / 60) + " Minutes "+practice_time_left % 60 + " Left")
+        }
 
         function f() {
+            // Overal practice
+            var practice_time_left = parseInt($('.minutes-input').val().replace('Minutes', '').trim()) * 60;            
+            
+            // Technique
+            var technique_time_cap = 30;
+            var technique_time_left = technique_time_cap;
+
+            update_timers_text(practice_time_left, technique_time_left);
+
             var secInterval = setInterval(function () {
-                ele = $('#technique-timer');
-                let secEle = $('.seconds');
-                // let sec = parseInt(secEle.text());
-                let eleMin = $('.minutes');
-                let min = parseInt(eleMin.text());
-                if (halfMin <= 30) {
-                    if (halfMin === 30) {
-                        if (topbarCounter < topbar.length) {
-                            $('.rotating-text').text(topbar[topbarCounter]);
-                            topbarCounter = topbarCounter + 1;
-                            console.log('change')
-                        } else {
-                            topbarCounter = 0;
-                        }
-                        if (titleCounter < title.length) {
-                            $('#technique').text(title[titleCounter]);
-                            titleCounter = titleCounter + 1;
-                        } else {
-                            titleCounter = 0;
-                        }
-                    }
-                    halfMin = halfMin + 1;
-                } else {
-                    halfMin = 0;
+                technique_time_left = technique_time_left - 1;
+                practice_time_left = practice_time_left - 1;
+
+                update_timers_text(practice_time_left, technique_time_left);
+
+                if (technique_time_left == 0) {
+                    console.log('next technique');
+                    // Next technique
                 }
-                if (sec > 0) {
-                    sec = sec - 1;
-                    if (sec > 30) {
-                        $(ele).text(sec - 30);
-                    } else {
-                        $(ele).text(sec);
-                    }
-                    $(secEle).text(sec);
-                } else {
-                    if (min > 0) {
-                        sec = 60;
-                        min = min - 1;
-                        $(eleMin).text(min);
-                    } else {
-                        clearInterval(secInterval);
-                        $('#practice').fadeOut(250);
-                        $('#thankyou').fadeIn(250);
-                    }
+
+                if (practice_time_left == 0) {
+                    // Finish practice
+                    clearInterval(secInterval);
+                    $('#practice').fadeOut(250);
+                    $('#thankyou').fadeIn(250);                    
                 }
+                
             }, interval);
         }
     })
