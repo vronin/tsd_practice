@@ -51,10 +51,10 @@
     <div id="practice">
         <div class="inner_block">
             <div class="block_container">
-                <h4 class="page-title"><span class="title-rotating">lipsum as it is sometimes known</span></h4>
-                <h4 class="seconds-timer"><span class="timer-sec">30 </span> seconds left</h4>
+                <h4 class="page-title" id="technique">Low block / Ha Dan Mahk Ki</h4>
+                <h4 class="seconds-timer"><span d="technique-timer">30 </span> seconds left</h4>
             </div>
-            <h5 class="main-timer"><span class="minutes">2</span> Minutes <span class="seconds">0</span> seconds Left
+            <h5 class="main-timer"><span class="minutes">2</span> Minutes <span class="seconds">0</span> seconds LeftZ
             </h5>
             <h5 class="main-timer topbar-text"><span class="rotating-text">10 gup</span></h5>
         </div>
@@ -112,7 +112,7 @@
 
         function f() {
             var secInterval = setInterval(function () {
-                ele = $('.timer-sec');
+                ele = $('#technique-timer');
                 let secEle = $('.seconds');
                 // let sec = parseInt(secEle.text());
                 let eleMin = $('.minutes');
@@ -127,7 +127,7 @@
                             topbarCounter = 0;
                         }
                         if (titleCounter < title.length) {
-                            $('.title-rotating').text(title[titleCounter]);
+                            $('#technique').text(title[titleCounter]);
                             titleCounter = titleCounter + 1;
                         } else {
                             titleCounter = 0;
