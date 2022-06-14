@@ -48,17 +48,17 @@
             </div>
         </div>
     </div>
-    <div id="practice">
+    <div id="practice" style="display: none;">
         <div class="inner_block">
             <div class="block_container">
                 <h4 class="page-title" id="technique_name"></h4>
                 <h4 class="seconds-timer" id="technique_timer"></h4>
             </div>
             <h5 class="main-timer" id="main_timer"></h5>
-            <h5 class="topbar-text" id="technique_rank"></h5>
+            <h5 class="main-timer topbar-text" id="technique_rank"></h5>
         </div>
     </div>
-    <div id="thankyou">
+    <div id="thankyou" style="display: none;">
         <div class="inner_block">
             <div class="block_container">
                 <h4 class="thanks_text">Thank you for the practice.</h4>
@@ -97,7 +97,7 @@
             e.preventDefault();
             $('#welcome').fadeOut(250);
             $('#practice').fadeIn(250);
-            f();
+            start_practice();
         });
 
         var techniques = [
@@ -128,7 +128,7 @@
             $(technique_rank).text(techniques[random_technique].rank);
         }
 
-        function f() {
+        function start_practice() {
             // Overal practice
             var practice_time_left = parseInt($('.minutes-input').val().replace('Minutes', '').trim()) * 60;            
             
