@@ -10,7 +10,7 @@
 <body>
 
 <div class="main_container">
-    <div id="page-one">
+    <div id="welcome">
         <div class="inner_block">
             <div class="block_container">
                 <span class="choose">Choose Gender</span>
@@ -50,7 +50,7 @@
             </div>
         </div>
     </div>
-    <div id="page-two">
+    <div id="practice">
         <div class="inner_block">
             <div class="block_container">
                 <h4 class="page-title"><span class="title-rotating">lipsum as it is sometimes known</span></h4>
@@ -61,7 +61,7 @@
             <h5 class="main-timer topbar-text"><span class="rotating-text">10 gup</span></h5>
         </div>
     </div>
-    <div id="page-three">
+    <div id="thankyou">
         <div class="inner_block">
             <div class="block_container">
                 <h4 class="thanks_text">Thank you for the practice.</h4>
@@ -98,8 +98,8 @@
         });
         $('.custom-btn').click(function (e) {
             e.preventDefault();
-            $('#page-one').fadeOut(250);
-            $('#page-two').fadeIn(250);
+            $('#welcome').fadeOut(250);
+            $('#practice').fadeIn(250);
             let minutesVal = parseInt($('.minutes-input').val().replace('Minutes', '').trim()) - 1;
             $(".minutes").text(minutesVal);
             f();
@@ -154,8 +154,8 @@
                         $(eleMin).text(min);
                     } else {
                         clearInterval(secInterval);
-                        $('#page-two').fadeOut(250);
-                        $('#page-three').fadeIn(250);
+                        $('#practice').fadeOut(250);
+                        $('#thankyou').fadeIn(250);
                     }
                 }
             }, interval);
