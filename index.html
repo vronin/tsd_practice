@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="https:cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+    <link href="https:fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+
+<div class="main_container">
+    <div id="page-one">
+        <div class="inner_block">
+            <div class="block_container">
+                <span class="choose">Choose Gender</span>
+                <div class="dropdown">
+                    <div class="select">
+                        <span class="select-gander">Select Gender</span>
+                        <i class="fa fa-chevron-left"></i>
+                    </div>
+                    <input type="hidden" name="gender">
+                    <ul class="dropdown-menu">
+                        <li id="male">Male</li>
+                        <li id="female">Female</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="block_container">
+                <span class="choose">practise time</span>
+                <div class="dropdown">
+                    <div class="select">
+                        <span class="practise-time">practise time</span>
+                        <i class="fa fa-chevron-left"></i>
+                    </div>
+                    <input type="hidden" name="gender" class="minutes-input">
+                    <ul class="dropdown-menu">
+                        <li id="2 Minutes">2 Minutes</li>
+                        <li id="5 Minutes">5 Minutes</li>
+                        <li id="10 Minutes">10 Minutes</li>
+                        <li id="15 Minutes">15 Minutes</li>
+                        <li id="20 Minutes">20 Minutes</li>
+                        <li id="25 Minutes">25 Minutes</li>
+                        <li id="30 Minutes">30 Minutes</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="block_container">
+                <button disabled class="custom-btn btn-3"><span>Submit</span></button>
+            </div>
+        </div>
+    </div>
+    <div id="page-two">
+        <div class="inner_block">
+            <div class="block_container">
+                <h4 class="page-title"><span class="title-rotating">lipsum as it is sometimes known</span></h4>
+                <h4 class="seconds-timer"><span class="timer-sec">30 </span> seconds left</h4>
+            </div>
+            <h5 class="main-timer"><span class="minutes">2</span> Minutes <span class="seconds">0</span> seconds Left
+            </h5>
+            <h5 class="main-timer topbar-text"><span class="rotating-text">10 gup</span></h5>
+        </div>
+    </div>
+    <div id="page-three">
+        <div class="inner_block">
+            <div class="block_container">
+                <h4 class="thanks_text">Thank you for the practice.</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src=" assets/js/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        /*Dropdown Menu*/
+        $('.dropdown').click(function () {
+            $(this).attr('tabindex', 1).focus();
+            $(this).toggleClass('active');
+            $(this).find('.dropdown-menu').slideToggle(300);
+        });
+        $('.dropdown').focusout(function () {
+            $(this).removeClass('active');
+            $(this).find('.dropdown-menu').slideUp(300);
+        });
+        $('.dropdown .dropdown-menu li').click(function () {
+            $(this).parents('.dropdown').find('span').text($(this).text());
+            $(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
+            if ($('.select-gander').text() !== 'Select Gender' && $('.practise-time').text() !== 'practise time') {
+                $('.custom-btn').prop('disabled', false);
+            } else {
+                $('.custom-btn').prop('disabled', true);
+            }
+        });
+        $('.custom-btn').click(function (e) {
+            e.preventDefault();
+            $('#page-one').fadeOut(250);
+            $('#page-two').fadeIn(250);
+            let minutesVal = parseInt($('.minutes-input').val().replace('Minutes', '').trim()) - 1;
+            $(".minutes").text(minutesVal);
+            f();
+        });
+        var interval = 1000;
+        var sec = 60;
+        var topbar = ['9 gup', '8 gup', '10 gup'];
+        var title = ['Lorem Ipsum is simply dummy text', 'Contrary to popular belief, Lorem Ipsum', 'lipsum as it is sometimes known'];
+        var topbarCounter = 0;
+        var titleCounter = 0;
+        var halfMin = 0;
+
+        function f() {
+            var secInterval = setInterval(function () {
+                ele = $('.timer-sec');
+                let secEle = $('.seconds');
+                // let sec = parseInt(secEle.text());
+                let eleMin = $('.minutes');
+                let min = parseInt(eleMin.text());
+                if (halfMin <= 30) {
+                    if (halfMin === 30) {
+                        if (topbarCounter < topbar.length) {
+                            $('.rotating-text').text(topbar[topbarCounter]);
+                            topbarCounter = topbarCounter + 1;
+                            console.log('change')
+                        } else {
+                            topbarCounter = 0;
+                        }
+                        if (titleCounter < title.length) {
+                            $('.title-rotating').text(title[titleCounter]);
+                            titleCounter = titleCounter + 1;
+                        } else {
+                            titleCounter = 0;
+                        }
+                    }
+                    halfMin = halfMin + 1;
+                } else {
+                    halfMin = 0;
+                }
+                if (sec > 0) {
+                    sec = sec - 1;
+                    if (sec > 30) {
+                        $(ele).text(sec - 30);
+                    } else {
+                        $(ele).text(sec);
+                    }
+                    $(secEle).text(sec);
+                } else {
+                    if (min > 0) {
+                        sec = 60;
+                        min = min - 1;
+                        $(eleMin).text(min);
+                    } else {
+                        clearInterval(secInterval);
+                        $('#page-two').fadeOut(250);
+                        $('#page-three').fadeIn(250);
+                    }
+                }
+            }, interval);
+        }
+    })
+</script>
+</body>
+</html>
