@@ -16,7 +16,7 @@
                 <span class="choose">Rank</span>
                 <div class="dropdown">
                     <div class="select">
-                        <span class="rank">Select Rank</span>
+                        <span class="rank" id="rank">Select Rank</span>
                         <i class="fa fa-chevron-left"></i>
                     </div>
                     <input type="hidden" name="gender">
@@ -36,10 +36,10 @@
                 </div>
             </div>
             <div class="block_container">
-                <span class="choose">practise time</span>
+                <span class="choose">Practice Time</span>
                 <div class="dropdown">
                     <div class="select">
-                        <span class="practise-time">practise time</span>
+                        <span class="practiсe_time" id="practiсe_time">Practice Time</span>
                         <i class="fa fa-chevron-left"></i>
                     </div>
                     <input type="hidden" name="gender" class="minutes-input">
@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="block_container">
-                <button class="custom-btn btn-3" id="start_button"><span>Start / Shi Jak</span></button>
+                <button disabled class="custom-btn btn-3" id="start_button"><span>Start / Shi Jak</span></button>
             </div>
         </div>
     </div>
@@ -83,11 +83,10 @@
   crossorigin="anonymous"></script>
 <script>
     $(document).ready(function () {
-        /*Dropdown Menu*/
+        // Open & close dropdown menus
         $('.dropdown').click(function () {
-            $(this).attr('tabindex', 1).focus();
-            $(this).toggleClass('active');
-            $(this).find('.dropdown-menu').slideToggle(300);
+           $(this).toggleClass('active');
+           $(this).find('.dropdown-menu').slideToggle(300);
         });
         $('.dropdown').focusout(function () {
             $(this).removeClass('active');
@@ -96,7 +95,7 @@
         $('.dropdown .dropdown-menu li').click(function () {
             $(this).parents('.dropdown').find('span').text($(this).text());
             $(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
-            if ($('.rank').text() !== 'Select Gender' && $('.practise-time').text() !== 'practise time') {
+            if ($('#rank').text() !== 'Select Rank' && $('#practiсe_time').text() !== 'Practice Time') {
                 $('#start_button').prop('disabled', false);
             } else {
                 $('#start_button').prop('disabled', true);
@@ -177,7 +176,6 @@
         technique_timer = $('#technique_timer');
         main_timer = $('#main_timer');
         
-
         function update_timers_text(practice_time_left, technique_time_left) {
             $(technique_timer).text(technique_time_left + " Seconds Left");
             $(main_timer).text(Math.floor(practice_time_left / 60) + " Minutes "+practice_time_left % 60 + " Left")
