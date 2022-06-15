@@ -19,7 +19,6 @@
                         <span id="rank">Select Rank</span>
                         <i class="fa fa-chevron-left"></i>
                     </div>
-                    <input type="hidden" name="gender">
                     <ul class="dropdown-menu">
                         <li>10th gup</li>
                         <li>9th gup</li>
@@ -36,6 +35,7 @@
                 </div>
             </div>
             <div class="block_container">
+                <!-- // TBD: Clean -->
                 <span class="choose">Practice Time</span>
                 <div class="dropdown">
                     <div class="select">
@@ -93,6 +93,7 @@
             $(this).find('.dropdown-menu').slideUp(300);
         });
         $('.dropdown .dropdown-menu li').click(function () {
+            // TBD: Clean
             $(this).parents('.dropdown').find('span').text($(this).text());
             $(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
             if ($('#rank').text() !== 'Select Rank' && $('#practiсe_time').text() !== 'Practice Time') {
@@ -189,6 +190,7 @@
 
         function start_practice() {
             // Overal practice
+            // TBD: Clean
             var practice_time_left = parseInt($('.minutes-input').val().replace('Minutes', '').trim()) * 60;            
             
             // Technique
