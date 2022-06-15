@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="block_container">
-                <button disabled class="custom-btn btn-3"><span>Start / Shi Jak</span></button>
+                <button disabled class="custom-btn btn-3" id="start_button"><span>Start / Shi Jak</span></button>
             </div>
         </div>
     </div>
@@ -88,12 +88,12 @@
             $(this).parents('.dropdown').find('span').text($(this).text());
             $(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
             if ($('.rank').text() !== 'Select Gender' && $('.practise-time').text() !== 'practise time') {
-                $('.custom-btn').prop('disabled', false);
+                $('#start_button').prop('disabled', false);
             } else {
-                $('.custom-btn').prop('disabled', true);
+                $('#start_button').prop('disabled', true);
             }
         });
-        $('.custom-btn').click(function (e) {
+        $('#start_button').click(function (e) {
             e.preventDefault();
             $('#welcome').fadeOut(250);
             $('#practice').fadeIn(250);
