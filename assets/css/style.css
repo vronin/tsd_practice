@@ -285,7 +285,7 @@ span.choose {
 }
 
 .main-timer {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 400;
     position: absolute;
     top: 2rem;
@@ -294,7 +294,7 @@ span.choose {
 }
 
 .feedback {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 400;
     position: absolute;
     bottom: 2rem;
