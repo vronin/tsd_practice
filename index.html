@@ -39,7 +39,7 @@
                 <span class="choose">Practice Time</span>
                 <div class="dropdown">
                     <div class="select">
-                        <span id="practiсe_time">Practice Time</span>
+                        <span id="practice_time">Practice Time</span>
                         <i class="fa fa-chevron-left"></i>
                     </div>
                     <ul class="dropdown-menu">
@@ -93,7 +93,8 @@
         });
         $('.dropdown .dropdown-menu li').click(function () {
             // Set span in parent to value of current item
-            $(this).parents('.dropdown').find('span').text($(this).text());
+            var selected_text = $(this).text()
+            $(this).parents('.dropdown').find('span').text(selected_text);
             var values_picked = $('#rank').text() !== 'Select Rank' && $('#practiсe_time').text() !== 'Practice Time';
             $('#start_button').prop('disabled', !values_picked);
         });
@@ -167,9 +168,9 @@
             
         ]
 
-        practice_time = $("#practice_time");
-        technique_name = $("#technique_name");
-        technique_rank = $("#technique_rank");
+        practice_time = $('#practice_time');
+        technique_name = $('#technique_name');
+        technique_rank = $('#technique_rank');
         technique_timer = $('#technique_timer');
         main_timer = $('#main_timer');
         
@@ -187,7 +188,8 @@
         function start_practice() {
             // Overal practice
             // TBD: Clean
-            var practice_time_left = parseInt(practice_time.text().replace('Minutes', '').trim()) * 60;            
+            var practice_time_text = practice_time.text()
+            var practice_time_left = parseInt(practice_time_text.replace('Minutes', '').trim()) * 60;            
             
             // Technique
             var technique_time_cap = 30;
