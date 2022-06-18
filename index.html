@@ -43,7 +43,7 @@
                         <i class="fa fa-chevron-left"></i>
                     </div>
                     <ul class="dropdown-menu">
-                        <li>5 Minutes</li>
+                        <li>1 Minutes</li>
                         <li>15 Minutes</li>
                         <li>30 Minutes</li> 
                         <li>60 Minutes</li> 
@@ -176,7 +176,7 @@
         
         function update_timers_text(practice_time_left, technique_time_left) {
             $(technique_timer).text(technique_time_left + " Seconds Left");
-            $(main_timer).text(Math.floor(practice_time_left / 60) + " Minutes "+practice_time_left % 60 + " Left")
+            $(main_timer).text(Math.floor(practice_time_left / 60) + " Minutes "+practice_time_left % 60 + " Seconds Left")
         }
 
         function update_technique() {
