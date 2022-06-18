@@ -67,7 +67,6 @@
                 <h4 class="seconds-timer" id="technique_timer"></h4>
             </div>
             <h5 class="main-timer" id="main_timer"></h5>
-            <h5 class="main-timer topbar-text" id="technique_rank"></h5>
             <h5 class="feedback">Feedback: <a href = "mailto: victor.ronin@gmail.com?subject=TSDPractice">Send Email</a></h5>
         </div>
     </div>
@@ -175,7 +174,6 @@
         practice_time = $('#practice_time');
         technique_type = $('#technique_type');        
         technique_name = $('#technique_name');
-        technique_rank = $('#technique_rank');
         technique_timer = $('#technique_timer');
         main_timer = $('#main_timer');
         
@@ -187,7 +185,6 @@
         function update_technique() {
             var random_technique = Math.floor(Math.random() * techniques.length)
             $(technique_name).text(techniques[random_technique].name);
-            $(technique_rank).text(techniques[random_technique].rank);
             $(technique_type).text(techniques[random_technique].type);
 
             return techniques[random_technique].time_cap;
