@@ -62,7 +62,7 @@
     <div id="practice" style="display: none;">
         <div class="inner_block">
             <div class="block_container">
-                <h4 class="page-title" id="technique_type"></h4>                
+                <h4 class="page-sub-title" id="technique_type"></h4>                
                 <h4 class="page-title" id="technique_name"></h4>
                 <h4 class="seconds-timer" id="technique_timer"></h4>
             </div>
@@ -178,8 +178,8 @@
         main_timer = $('#main_timer');
         
         function update_timers_text(practice_time_left, technique_time_left) {
-            $(technique_timer).text(technique_time_left + " Seconds Left");
-            $(main_timer).text(Math.floor(practice_time_left / 60) + " Minutes "+practice_time_left % 60 + " Seconds Left")
+            $(technique_timer).text("Exercise time left: "+ technique_time_left + " Seconds");
+            $(main_timer).text("Practice time left: "+Math.floor(practice_time_left / 60) + " Minutes "+practice_time_left % 60+" Seconds")
         }
 
         function update_technique() {
