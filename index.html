@@ -225,6 +225,12 @@
             return techniques[random_technique].time_cap;
         }
 
+        document.addEventListener('keyup', (event) => {
+            if (event.key == 'Z') {
+                update_technique();
+            }
+        }, false);
+
         function start_practice() {
             // Overal practice
             // TBD: Clean
