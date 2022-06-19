@@ -64,7 +64,7 @@
             <div class="block_container">
                 <h4 class="page-sub-title" id="technique_type"></h4>                
                 <h4 class="page-title" id="technique_name"></h4>
-                <h4 class="seconds-timer" id="technique_timer"></h4>
+                <h4 class="seconds-timer" >Exercise time left <span id="technique_timer"></span> Seconds</h4>
             </div>
             <h5 class="main-timer" id="main_timer"></h5>
             <h5 class="feedback"><a href = "mailto: victor.ronin@gmail.com?subject=TSDPractice">Feedback</a></h5>
@@ -111,50 +111,80 @@
         });
 
         var techniques = [
-            // 10-9 gup
+            // Blocks
             { "name": "Low Block / Ha Dan Makh Ki", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill"},
             { "name": "High Block / San Dan Makh Ki", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill" },
             { "name": "Inside To Outside Block / Ahneso Pahkuro Mahk Ki", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill" },
             { "name": "Outside To Inside Block / Pahkeso Ahnuro Mahk Ki", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill" },
-            { "name": "Side Block", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill"},
-            { "name": "Reinforced Block", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill" },
-            { "name": "Center Punch / Choong Dan Kong Kyuck", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill" },
-            { "name": "High Punch / San Dan Kong Kyuck", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill" },
-            { "name": "Side Punch / Choong Dan  Hang Jin", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill" },
-            { "name": "Front Kick / Ahp Cha Ki", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill" },
-            { "name": "Round Kick / Tollyo Cha Ki", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill" },
-            { "name": "Side Kick  / Yup Cha Ki", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill" },
-            { "name": "Stepping Side Kick", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill" },
-            { "name": "Axe Kick", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill" },
-            // ? Basic jumping
+            { "name": "Side Block / Yup Mahk Ki", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill"},
+            { "name": "High Knife Hand Block", "rank": "7 Gup", "time_cap": 30, "type": "Line Drill"},
+            { "name": "Center Knife Hand Block", "rank": "7 Gup", "time_cap": 30, "type": "Line Drill"},
+            { "name": "Low Knife Hand Block", "rank": "7 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "Low Two-Hand X Block", "rank": "6 Gup", "time_cap": 30, "type": "Line Drill"},
+            { "name": "High Two-Hand X Block", "rank": "6 Gup", "time_cap": 30, "type": "Line Drill" },
 
-            // 8-7 gup
-            { "name": "Center Knife Hand", "rank": "8 Gup", "time_cap": 30, "type": "Line Drill"},
-            { "name": "Low Knife Hand", "rank": "8 Gup", "time_cap": 30, "type": "Line Drill" },
+            // Strikes
+            { "name": "Low Punch / Ha Dan Kong Kyuck", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "Center Punch / Choong Dan Kong Kyuck", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "High Punch / San Dan Kong Kyuck", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill" },            
+            { "name": "Side Punch / Choong Dan Hang Jin", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill" },
             { "name": "Spear hand punch", "rank": "8 Gup", "time_cap": 30, "type": "Line Drill" },
+
+            // Kicks
+            { "name": "Front Kick / Ahp Cha Ki", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "Round House Kick / Tollyo Cha Ki", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "Side Kick  / Yup Cha Ki", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "Stepping Side Kick", "rank": "9 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "Axe Kick", "rank": "8 Gup", "time_cap": 30, "type": "Line Drill" },
             { "name": "Spinning Back Kick / Dwi Tollyo Cha Ki", "rank": "8 Gup", "time_cap": 30, "type": "Line Drill" },
             { "name": "Crescent Kick", "rank": "8 Gup", "time_cap": 30, "type": "Line Drill" },
-            { "name": "Hook Kick", "rank": "8 Gup", "time_cap": 30, "type": "Line Drill" },
-            { "name": "Wheel Kick", "rank": "8 Gup", "time_cap": 30, "type": "Line Drill" },
-            { "name": "Yuk Soo", "rank": "8 Gup", "time_cap": 30, "type": "Line Drill" },
-            { "name": "Yuk Jin", "rank": "8 Gup", "time_cap": 30, "type": "Line Drill" },
-            // ? All Basic jumping
-            // ? Secondary basic hand techniques executed in fighter stance
-            // ? Two hand combination
+            { "name": "Hook Kick", "rank": "7 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "Wheel Kick", "rank": "7 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "Jumping Front Kick", "rank": "6 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "Jumping Round House Kick", "rank": "6 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "Jumping Side Kick", "rank": "6 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "Flying kick", "rank": "3 Gup", "time_cap": 30, "type": "Line Drill" },
 
-             // 6-5 gup
-             // ? Two or three hand combination
-             // ? All  jumping
-            
-            // 4-3 gup
-            // ? Flying kick 
-             { "name": "Flying kick", "rank": "4 Gup", },
+            // Combination
+            { "name": "Yuk Soo", "rank": "6 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "Yuk Jin", "rank": "6 Gup", "time_cap": 30, "type": "Line Drill" },
 
-            // 2-1 gup
-            { "name": "Flying kick", "rank": "4 Gup", },
-            { "name": "Bassai", "rank": "2 Gup", "time_cap": 90, "type": "Form / Hyung"},
-            // ? Multi combination
-            // ? Double action
+            // One-step (Hand)
+            { "name": "One-step Hands #1-2", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Hands #3-4", "rank": "9 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Hands #5-6", "rank": "8 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Hands #7-8", "rank": "7 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Hands #9-10", "rank": "6 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Hands #11-12", "rank": "5 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Hands #13-14", "rank": "4 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Hands #15-16", "rank": "3 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Hands #17-18", "rank": "2 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Hands #19-20", "rank": "1 Gup", "time_cap": 30, "type": "Line Drill" },
+
+            // One-step (Kicks)
+            { "name": "One-step Kicks #1-2", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Kicks #3-4", "rank": "9 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Kicks #5-6", "rank": "8 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Kicks #7-8", "rank": "7 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Kicks #9-10", "rank": "6 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Kicks #11-12", "rank": "5 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Kicks #13-14", "rank": "4 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Kicks #15-16", "rank": "3 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Kicks #17-18", "rank": "2 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Kicks #19-20", "rank": "1 Gup", "time_cap": 30, "type": "Line Drill" },
+
+            // Self-defence
+            { "name": "One-step Self-Defence #1-2", "rank": "10 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Self-Defence #3-4", "rank": "9 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Self-Defence #5-6", "rank": "8 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Self-Defence #7-8", "rank": "7 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Self-Defence #9-10", "rank": "6 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Self-Defence #11-12", "rank": "5 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Self-Defence #13-14", "rank": "4 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Self-Defence #15-16", "rank": "3 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Self-Defence #17-18", "rank": "2 Gup", "time_cap": 30, "type": "Line Drill" },
+            { "name": "One-step Self-Defence #19-20", "rank": "1 Gup", "time_cap": 30, "type": "Line Drill" },
+
 
             // Form
             { "name": "Sae Kye Hyung Il Bu", "rank": "10 Gup", "time_cap": 60, "type": "Form / Hyung" },
@@ -165,6 +195,7 @@
             { "name": "Pyung Ahn Sam Dan", "rank": "5 Gup", "time_cap": 80, "type": "Form / Hyung" }, 
             { "name": "Pyung Ahn Sah Dan", "rank": "4 Gup", "time_cap": 80, "type": "Form / Hyung" },
             { "name": "Pyung Ahn Oh Dan", "rank": "3 Gup", "time_cap": 80, "type": "Form / Hyung" }, 
+            { "name": "Bassai", "rank": "2 Gup", "time_cap": 90, "type": "Form / Hyung"},
             { "name": "Bong Hyung Il Bu", "rank": "2 Gup", "time_cap": 80, "type": "Form / Hyung" }, 
             { "name": "Hainhanchi Cho Dan", "rank": "1 Gup", "time_cap": 80, "type": "Form / Hyung" },
             { "name": "Bong Hyung E Bu", "rank": "1 Gup", "time_cap": 90, "type": "Form / Hyung" }, 
@@ -178,7 +209,7 @@
         main_timer = $('#main_timer');
         
         function update_timers_text(practice_time_left, technique_time_left) {
-            $(technique_timer).text("Exercise time left: "+ technique_time_left + " Seconds");
+            $(technique_timer).text(technique_time_left);
             $(main_timer).text("Practice time left: "+Math.floor(practice_time_left / 60) + " Minutes "+practice_time_left % 60+" Seconds")
         }
 
