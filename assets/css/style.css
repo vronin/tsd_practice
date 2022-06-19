@@ -302,6 +302,16 @@ span.choose {
     text-transform: capitalize;
 }
 
+.top_banner {
+    font-size: 3rem;
+    font-weight: 400;
+    position: absolute;
+    top: 5rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-transform: capitalize;
+}
+
 
 
 .thanks_text {
