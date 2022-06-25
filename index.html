@@ -252,12 +252,19 @@
 
                 update_timers_text(practice_time_left, technique_time_left);
 
+                // End of exercise is approaching
+                if (technique_time_left == 7 || technique_time_left == 4) {
+                    let sound = new Audio('./assets/sound/metal-transition.mp3');
+                    sound.play();
+                }
+
+                // End of exercise
                 if (technique_time_left == 0) {
                     technique_time_left = update_technique();
                 }
 
+                // End of practice
                 if (practice_time_left == 0) {
-                    // Finish practice
                     clearInterval(secInterval);
                     $('#practice').fadeOut(250);
                     $('#thankyou').fadeIn(250);                    
