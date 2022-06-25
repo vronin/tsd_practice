@@ -67,7 +67,7 @@
                 <h4 class="page-title" id="technique_name_korean"></h4>
                 <h4 class="seconds-timer" >Exercise time left <span id="technique_timer"></span> Seconds</h4>
             </div>
-            <h5 class="main-timer" id="main_timer"></h5>
+            <h5 class="main-timer">Practice Time Left: <span id="main_timer_minutes"></span> Minutes <span id="main_timer_seconds"></span> Seconds</h5>
             <h5 class="feedback"><a href = "mailto: victor.ronin@gmail.com?subject=TSDPractice">Feedback</a></h5>
         </div>
     </div>
@@ -242,7 +242,8 @@
         technique_name_tag = $('#technique_name');
         technique_name_korean_tag = $('#technique_name_korean');
         technique_timer_tag = $('#technique_timer');
-        main_timer_tag = $('#main_timer');
+        main_timer_minutes_tag = $('#main_timer_minutes');
+        main_timer_seconds_tag = $('#main_timer_seconds');
         rank_tag = $('#rank');
 
         function weighted_choice(list) {
@@ -263,7 +264,8 @@
         // Updates exercise and practice timer
         function update_timers_text(practice_time_left, technique_time_left) {
             $(technique_timer_tag).text(technique_time_left);
-            $(main_timer_tag).text("Practice time left: "+Math.floor(practice_time_left / 60) + " Minutes "+practice_time_left % 60+" Seconds")
+            $(main_timer_minutes_tag).text(Math.floor(practice_time_left / 60))
+            $(main_timer_seconds_tag).text(Math.floor(practice_time_left % 60))
         }
 
         // Chooses a new technique
