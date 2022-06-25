@@ -212,7 +212,24 @@
             { "name": "Bong Hyung E Bu", "rank": "1", "time_cap": 90, "type": "Form / Hyung" }, 
             { "name": "Sip Soo", "rank": "0", "time_cap": 80, "type": "Form / Hyung"}, 
         ]
+
+        var breathers = [
+            // Rest
+            { "name": "Rest / Shio", "rank": "10", "time_cap": 10, "type": "Rest", weight: 5},
+            { "name": "Rest / Shio", "rank": "10", "time_cap": 15, "type": "Rest", weight: 3},
+            { "name": "Rest / Shio", "rank": "10", "time_cap": 20, "type": "Rest", weight: 3},
+            { "name": "Rest / Shio", "rank": "10", "time_cap": 30, "type": "Rest", weight: 3},
+
+            // Trivia
+            { "name": "WTSDA was founded November 13-14, 1982,", "time_cap": 15, "type": "Trivia", weight: 1},
+            { "name": "WTSDA found is grandmaster Jael Chu Shin.", "time_cap": 15, "type": "Trivia", weight: 1},
+            { "name": "Sae Kye Hyung froms were created in 1987.", "time_cap": 15, "type": "Trivia", weight: 1},
+            { "name": "Sae Kye Hyung froms are based on Ki Cho forms.", "time_cap": 15, "type": "Trivia", weight: 1},
+            { "name": "WTSDA current grandmaster is Mr. William Strong.", "time_cap": 15, "type": "Trivia", weight: 1},
+        ]
+
         var techniques_filtered_list = []
+        var breather_interval = 180;
 
         practice_time_tag = $('#practice_time');
         technique_type_tag = $('#technique_type');        
@@ -220,6 +237,21 @@
         technique_timer_tag = $('#technique_timer');
         main_timer_tag = $('#main_timer');
         rank_tag = $('#rank');
+
+        function weighted_choice(list) {
+            let total_weight = 0
+            for (let i = 0; i < list.length; i++) {
+                total_weight += list[i].weight;
+            }
+
+            var weight_based_choice = Math.floor(Math.random() * total_weight);
+            for (let i = 0; i < list.length; i++) {
+                weight_based_choice -= list[i].weight;
+                if (weight_based_choice < 0) {
+                    return i;
+                }
+            }
+        }
         
         // Updates exercise and practice timer
         function update_timers_text(practice_time_left, technique_time_left) {
@@ -233,7 +265,7 @@
             $(technique_name_tag).text(techniques_filtered_list[random_technique].name);
             $(technique_type_tag).text(techniques_filtered_list[random_technique].type);
 
-            let time_cap =  techniques_filtered_list[random_technique].time_cap;
+            let time_cap = techniques_filtered_list[random_technique].time_cap;
 
             // Remove selected
             techniques_filtered_list.splice(random_technique, 1);
@@ -245,6 +277,15 @@
             return time_cap;
         }
 
+        function next_breather() {
+            var random_breather = weighted_choice(breathers);
+            
+            $(technique_name_tag).text(breathers[random_breather].name);
+            $(technique_type_tag).text(breathers[random_breather].type);
+            
+            return breathers[random_breather].time_cap;
+        }
+
         function reset_technique_list(rank) {
             techniques_filtered_list = techniques_full_list.filter(
                 technique => parseInt(technique.rank) >= rank
@@ -254,6 +295,7 @@
         function start_practice() {
             // Overal practice
             // TBD: Clean
+            var time_till_next_breather = breather_interval;
             var practice_time_left = parseInt(practice_time_tag.text().replace('Minutes', '').trim()) * 60;            
             var rank_text = rank_tag.text().replace(/[^0-9]/g,'');
             var rank = parseInt(rank_text); 
@@ -268,6 +310,7 @@
             var secInterval = setInterval(function () {
                 technique_time_left = technique_time_left - 1;
                 practice_time_left = practice_time_left - 1;
+                time_till_next_breather = time_till_next_breather - 1;
 
                 update_timers_text(practice_time_left, technique_time_left);
 
@@ -279,7 +322,14 @@
 
                 // End of exercise
                 if (technique_time_left == 0) {
-                    technique_time_left = update_technique(rank);
+                    if (time_till_next_breather > 0) {
+                        // Next exercise
+                        technique_time_left = update_technique(rank);
+                    } else {                        
+                        time_till_next_breather = breather_interval;
+                        technique_time_left = next_breather();
+                    }
+                    update_timers_text(practice_time_left, technique_time_left);
                 }
 
                 // End of practice
