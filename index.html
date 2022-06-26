@@ -246,7 +246,7 @@
         ]
 
         var techniques_filtered_list = []
-        var breather_interval = 60;
+        var breather_interval = 150;
 
         practice_time_tag = $('#practice_time');
         technique_type_tag = $('#technique_type');        
@@ -297,27 +297,29 @@
             utter_kor.lang = 'ko-KR';
             utter_kor.text = text; 
             utter_kor.volume = 1;
-            utter.rate = 0.7;
+            utter_kor.rate = 0.7;
             window.speechSynthesis.cancel();
             window.speechSynthesis.speak(utter_kor);
         }
 
         // Chooses a new technique
         function update_technique(rank) {
-            var random_technique = Math.floor(Math.random() * techniques_filtered_list.length)
-            $(technique_name_tag).text(techniques_filtered_list[random_technique].name);
-            $(technique_name_korean_tag).text(techniques_filtered_list[random_technique].korean);
-            $(technique_type_tag).text(techniques_filtered_list[random_technique].type);
+            var random_technique_index = Math.floor(Math.random() * techniques_filtered_list.length)
+            var random_technique = techniques_filtered_list[random_technique_index];
 
-            let time_cap = techniques_filtered_list[random_technique].time_cap;
+            $(technique_name_tag).text(random_technique.name);
+            $(technique_name_korean_tag).text(random_technique.korean);
+            $(technique_type_tag).text(random_technique.type);
+
+            let time_cap = random_technique.time_cap;
 
             // Pronounce it in English and Korean
-            sayit_english(techniques_filtered_list[random_technique].name, function(event) {
-                sayit_korean(techniques_filtered_list[random_technique].hangul)
+            sayit_english(random_technique.name, function(event) {
+                sayit_korean(random_technique.hangul)
             });
 
             // Remove selected from the list
-            techniques_filtered_list.splice(random_technique, 1);
+            techniques_filtered_list.splice(random_technique_index, 1);
             // If we executed all exercises reset the list
             if (techniques_filtered_list.length == 0) {
                 reset_technique_list(rank);
@@ -333,6 +335,10 @@
             $(technique_name_korean_tag).text(breathers[random_breather].korean);
             $(technique_type_tag).text(breathers[random_breather].type);
             
+            sayit_english(breathers[random_breather].name, function(event) {                
+            });
+
+
             return breathers[random_breather].time_cap;
         }
 
