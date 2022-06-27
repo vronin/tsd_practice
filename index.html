@@ -233,9 +233,9 @@
 
         var breathers = [
             // Rest
-            { "name": "Rest", "korean": "Shio", "rank": "10", "time_cap": 10, "type": "", weight: 5},
-            { "name": "Rest", "korean": "Shio", "rank": "10", "time_cap": 15, "type": "", weight: 3},
+            { "name": "Rest", "korean": "Shio", "rank": "10", "time_cap": 15, "type": "", weight: 5},
             { "name": "Rest", "korean": "Shio", "rank": "10", "time_cap": 20, "type": "", weight: 3},
+            { "name": "Rest", "korean": "Shio", "rank": "10", "time_cap": 25, "type": "", weight: 3},
             { "name": "Rest", "korean": "Shio", "rank": "10", "time_cap": 30, "type": "", weight: 3},
 
             // Trivia
@@ -291,6 +291,13 @@
             utter.onend = onend;
             window.speechSynthesis.cancel();
             window.speechSynthesis.speak(utter);
+
+            // some techniques doesn't have english name
+            // And it won't call onend (to say korean) in such a case
+
+            if (text.length == 0) {
+                onend();
+            }            
         }
 
         function sayit_korean(text) {
