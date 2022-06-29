@@ -376,7 +376,9 @@
             
             var secInterval = setInterval(function () {
                 technique_time_left = technique_time_left - 1;
-                practice_time_left = practice_time_left - 1;
+                if (practice_time_left > 0) {
+                    practice_time_left = practice_time_left - 1;
+                }
                 time_till_next_breather = time_till_next_breather - 1;
 
                 update_timers_text(practice_time_left, technique_time_left);
@@ -385,6 +387,13 @@
                 if (technique_time_left == 7 || technique_time_left == 4) {
                     let sound = new Audio('./assets/sound/metal-transition.mp3');
                     sound.play();
+                }
+
+                // End of practice
+                if (practice_time_left == 0 && technique_time_left == 0) {
+                    clearInterval(secInterval);
+                    $('#practice').fadeOut(250);
+                    $('#thankyou').fadeIn(250);                    
                 }
 
                 // End of exercise
@@ -397,13 +406,6 @@
                         technique_time_left = next_breather();
                     }
                     update_timers_text(practice_time_left, technique_time_left);
-                }
-
-                // End of practice
-                if (practice_time_left == 0) {
-                    clearInterval(secInterval);
-                    $('#practice').fadeOut(250);
-                    $('#thankyou').fadeIn(250);                    
                 }
                 
             }, 1000);
