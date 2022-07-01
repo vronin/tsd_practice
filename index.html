@@ -233,14 +233,24 @@
 
         var breathers = [
             // Rest
-            { "name": "Rest", "korean": "Shio", "rank": "10", "time_cap": 15, "type": "", weight: 5},
-            { "name": "Rest", "korean": "Shio", "rank": "10", "time_cap": 20, "type": "", weight: 3},
-            { "name": "Rest", "korean": "Shio", "rank": "10", "time_cap": 25, "type": "", weight: 3},
-            { "name": "Rest", "korean": "Shio", "rank": "10", "time_cap": 30, "type": "", weight: 3},
+            { "name": "Rest", "korean": "Shio", "rank": "10", "time_cap": 15, "type": "", weight: 8},
+            { "name": "Rest", "korean": "Shio", "rank": "10", "time_cap": 20, "type": "", weight: 6},
+            { "name": "Rest", "korean": "Shio", "rank": "10", "time_cap": 25, "type": "", weight: 6},
+            { "name": "Rest", "korean": "Shio", "rank": "10", "time_cap": 30, "type": "", weight: 6},
 
             // Trivia
+            
+            { "name": "The Sylla Dynasty was founded in 57 BC.", "korean": "", "time_cap": 15, "type": "Trivia", weight: 1},
+            { "name": "The Koguryo was founded in 37 BC.", "korean": "", "time_cap": 15, "type": "Trivia", weight: 1},
+            { "name": "The Paekche was founded in 18 BC.", "korean": "", "time_cap": 15, "type": "Trivia", weight: 1},
+            { "name": "Sylla Dynasty united 3 kingdoms in 668 AD.", "korean": "", "time_cap": 15, "type": "Trivia", weight: 1},
+            { "name": "Five codes of Tang Soo Do were origniated by Won Kwang.", "korean": "", "time_cap": 15, "type": "Trivia", weight: 1},
+            { "name": "Wang Kon came to power in 918 AD and formed Koryo Dynasty in 935 AD.", "korean": "", "time_cap": 15, "type": "Trivia", weight: 1},
+            { "name": "Muye Dobo Tongji book was published in 1790.", "korean": "", "time_cap": 15, "type": "Trivia", weight: 1},            
+            { "name": "Moo Duk Kwan was founded by Hwang Kee in 1947.", "korean": "", "time_cap": 15, "type": "Trivia", weight: 1},                        
+            { "name": "GM J.C. Shin moved to United State in 1968.", "korean": "", "time_cap": 15, "type": "Trivia", weight: 1},                                    
             { "name": "WTSDA was founded November 13-14, 1982.", "korean": "", "time_cap": 15, "type": "Trivia", weight: 1},
-            { "name": "WTSDA found is grandmaster Jael Chu Shin.", "korean": "", "time_cap": 15, "type": "Trivia", weight: 1},
+            { "name": "WTSDA founder is grandmaster Jael Chu Shin.", "korean": "", "time_cap": 15, "type": "Trivia", weight: 1},
             { "name": "Sae Kye Hyung forms were created in 1987.", "korean": "",  "time_cap": 15, "type": "Trivia", weight: 1},
             { "name": "Sae Kye Hyung forms are based on Ki Cho forms.", "korean": "", "time_cap": 15, "type": "Trivia", weight: 1},
             { "name": "WTSDA current grandmaster is Mr. William Strong.", "korean": "", "time_cap": 15, "type": "Trivia", weight: 1},
@@ -257,8 +267,13 @@
         main_timer_minutes_tag = $('#main_timer_minutes');
         main_timer_seconds_tag = $('#main_timer_seconds');
         rank_tag = $('#rank');
+        ticker_length = 1000;
 
-
+        document.addEventListener('keyup', event => {
+            if (event.key === 'Z') {
+                ticker_length = Math.floor(ticker_length / 10);
+            }
+        });
 
         function weighted_choice(list) {
             let total_weight = 0
@@ -357,9 +372,6 @@
         }
 
         function start_practice() {
-
-   
-
             // Overal practice
             // TBD: Clean
             var time_till_next_breather = breather_interval;
@@ -408,7 +420,7 @@
                     update_timers_text(practice_time_left, technique_time_left);
                 }
                 
-            }, 1000);
+            }, ticker_length);
         }
     })
 </script>
