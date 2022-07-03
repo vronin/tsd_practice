@@ -130,6 +130,10 @@ $(document).ready(function () {
         { "name": "", "korean": "Hainhanchi Cho Dan", "hangul": "나이한찌 초단", "rank": "1", "time_cap": 75, "type": "Form / Hyung" },
         { "name": "", "korean": "Bong Hyung E Bu", "hangul": "봉형 이 로", "rank": "1", "time_cap": 85, "type": "Form / Hyung" }, 
         { "name": "", "korean": "Sip Soo", "hangul": "십수", "rank": "0", "time_cap": 75, "type": "Form / Hyung"}, 
+
+        // Other
+        { "name": "(Shadow) free sparring", "korean": "Jayu dae run", "hangul": "자유 대련", "rank": "7", "time_cap": 45, "type": "Sparring" },
+       
     ]
 
     var breathers = [
