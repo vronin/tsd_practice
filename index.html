@@ -1,102 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TSD Practice</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
-    <link rel="stylesheet" href="assets/css/style.css"/>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MB1CMTLK3S"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-MB1CMTLK3S');
-    </script>
+	<title>TSD Practice</title>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+	<link rel="stylesheet" href="assets/css/style.css" />
 
-    <script src="./assets/js/main.js"></script>
-
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-MB1CMTLK3S"></script>
+	<script>
+    	window.dataLayer = window.dataLayer || [];
+	    function gtag() {
+		    dataLayer.push(arguments);
+	    }
+	    gtag('js', new Date());
+	    gtag('config', 'G-MB1CMTLK3S');
+	</script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="./assets/js/main.js"></script>
 </head>
+
 <body>
-<script>setup();</script>
-<div class="main_container">
-    <div id="welcome">
-        <h5 class="top_banner">Welcome to TSD practice.</h5>
-        <div class="inner_block">
-            <div class="block_container">
-                <span class="choose">Rank</span>
-                <div class="dropdown">
-                    <div class="select">
-                        <span id="rank">Select Rank</span>
-                        <i class="fa fa-chevron-left"></i>
-                    </div>
-                    <ul class="dropdown-menu">
-                        <li>10th Gup</li>
-                        <li>9th Gup</li>
-                        <li>8th Gup</li>
-                        <li>7th Gup</li>
-                        <li>6th Gup</li>
-                        <li>5th Gup</li>
-                        <li>4th Gup</li>
-                        <li>3th Gup</li>
-                        <li>2nd Gup</li>
-                        <li>1st Gup</li>
-                        <li>Cho Dan Bo</li>                        
-                    </ul>
-                </div>
-            </div>
-            <div class="block_container">
-                <!-- // TBD: Clean -->
-                <span class="choose">Practice Time</span>
-                <div class="dropdown">
-                    <div class="select">
-                        <span id="practice_time">Practice Time</span>
-                        <i class="fa fa-chevron-left"></i>
-                    </div>
-                    <ul class="dropdown-menu">
-                        <li>1 Minutes</li>
-                        <li>5 Minutes</li>
-                        <li>15 Minutes</li>
-                        <li>30 Minutes</li> 
-                        <li>60 Minutes</li> 
-                        <li>90 Minutes</li>                      
-                    </ul>
-                </div>
-            </div>
-            <div class="block_container">
-                <button disabled class="custom-btn btn-3" id="start_button"><span>Start / Shi Jak</span></button>
-            </div>
-            <h5 class="feedback"><a href = "mailto: victor.ronin@gmail.com?subject=TSDPractice">Feedback</a></h5>
-        </div>
-    </div>
-    <div id="practice" style="display: none;">
-        <div class="inner_block">
-            <div class="block_container">
-                <h4 class="page-sub-title" id="technique_type"></h4>                
-                <h4 class="page-title" id="technique_name"></h4>
-                <h4 class="page-title" id="technique_name_korean"></h4>
-                <h4 class="seconds-timer" >Exercise time left <span id="technique_timer"></span> Seconds</h4>
-            </div>
-            <h5 class="main-timer">Practice Time Left: <span id="main_timer_minutes"></span> Minutes <span id="main_timer_seconds"></span> Seconds</h5>
-            <h5 class="feedback"><a href = "mailto: victor.ronin@gmail.com?subject=TSDPractice">Feedback</a></h5>
-        </div>
-    </div>
-    <div id="thankyou" style="display: none;">
-        <div class="inner_block">
-            <div class="block_container">
-                <h4 class="thanks_text">Thank you for the practice.</h4>
-            </div>
-            <h5 class="feedback"><a href = "mailto: victor.ronin@gmail.com?subject=TSDPractice">Feedback</a></h5>
-        </div>
-    </div>
-</div>
-
-
-
-
+	<div class="main_container">
+		<div id="welcome">
+			<h5 class="top_banner">Welcome to TSD practice.</h5>
+			<div class="inner_block">
+				<div class="block_container"> <span class="choose">Rank</span>
+					<div class="dropdown">
+						<div class="select"> <span id="rank">Select Rank</span> <i class="fa fa-chevron-left"></i> </div>
+						<ul class="dropdown-menu">
+							<li>10th Gup</li>
+							<li>9th Gup</li>
+							<li>8th Gup</li>
+							<li>7th Gup</li>
+							<li>6th Gup</li>
+							<li>5th Gup</li>
+							<li>4th Gup</li>
+							<li>3th Gup</li>
+							<li>2nd Gup</li>
+							<li>1st Gup</li>
+							<li>Cho Dan Bo</li>
+						</ul>
+					</div>
+				</div>
+				<div class="block_container">
+					<!-- // TBD: Clean --><span class="choose">Practice Time</span>
+					<div class="dropdown">
+						<div class="select"> <span id="practice_time">Practice Time</span> <i class="fa fa-chevron-left"></i> </div>
+						<ul class="dropdown-menu">
+							<li>1 Minutes</li>
+							<li>5 Minutes</li>
+							<li>15 Minutes</li>
+							<li>30 Minutes</li>
+							<li>60 Minutes</li>
+							<li>90 Minutes</li>
+						</ul>
+					</div>
+				</div>
+				<div class="block_container">
+					<button disabled class="custom-btn btn-3" id="start_button"><span>Start / Shi Jak</span></button>
+				</div>
+				<h5 class="feedback"><a href = "mailto: victor.ronin@gmail.com?subject=TSDPractice">Feedback</a></h5> </div>
+		</div>
+		<div id="practice" style="display: none;">
+			<div class="inner_block">
+				<div class="block_container">
+					<h4 class="page-sub-title" id="technique_type"></h4>
+					<h4 class="page-title" id="technique_name"></h4>
+					<h4 class="page-title" id="technique_name_korean"></h4>
+					<h4 class="seconds-timer">Exercise time left <span id="technique_timer"></span> Seconds</h4> </div>
+				<h5 class="main-timer">Practice Time Left: <span id="main_timer_minutes"></span> Minutes <span id="main_timer_seconds"></span> Seconds</h5>
+				<h5 class="feedback"><a href = "mailto: victor.ronin@gmail.com?subject=TSDPractice">Feedback</a></h5> </div>
+		</div>
+		<div id="thankyou" style="display: none;">
+			<div class="inner_block">
+				<div class="block_container">
+					<h4 class="thanks_text">Thank you for the practice.</h4> </div>
+				<h5 class="feedback"><a href = "mailto: victor.ronin@gmail.com?subject=TSDPractice">Feedback</a></h5> </div>
+		</div>
+	</div>
+    
+	<script>
+	    setup();
+	</script>
 </body>
+
 </html>
